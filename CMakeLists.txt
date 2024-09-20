@@ -4,7 +4,12 @@ project(RLGameSim_Core LANGUAGES CXX)
 
 add_subdirectory(RocketSim)
 
-add_executable(${PROJECT_NAME})
+file(GLOB_RECURSE SOURCES "src/*.cpp")
+file(GLOB_RECURSE HEADERS "src/*.h")
+
+file(GLOB_RECURSE JSON "JSON/*.hpp")
+
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${JSON})
 
 target_include_directories(${PROJECT_NAME} PRIVATE RocketSim/src RocketSim/libsrc)
 
